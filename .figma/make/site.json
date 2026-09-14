@@ -1,5 +1,8 @@
 {
   "title": "OZJ Oil & Gas",
+  "icons": {
+    "icon": "/favicon.png"
+  },
   "description": "OZJ Enterprise Limited provides reliable diesel supply, marine and offshore fuel delivery, procurement and technical services to keep your operations running.",
   "openGraph": {
     "image": "https://ozjoilandgaswebsite.vercel.app/ozj-diesel-delivery-preview.png",
