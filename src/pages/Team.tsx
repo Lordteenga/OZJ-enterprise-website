@@ -39,10 +39,10 @@ export const leaders = [
   },
   {
     slug: "ola-joshua",
-    name: "Ola Joshua",
+    name: "Ola Josh",
     role: "Chief Operating Officer",
     image: olaImg,
-    imageAlt: "Ola Joshua, COO of OZJ Enterprise Limited",
+    imageAlt: "Ola Josh, COO of OZJ Enterprise Limited",
     tagline: "Investment Banking · Private Equity · M&A",
     linkedin: "https://www.linkedin.com/in/josh-ola-5439b41b4",
     stats: [
@@ -53,7 +53,8 @@ export const leaders = [
     bio: [
       "Josh is a faith-driven, impact-based investor across the continent of Africa. He has a successful track record of building a team of some of the most high-powered, experienced executives with a combined 50+ years of experience running billion-dollar companies.",
       "With experience in multibillion-dollar acquisitions and IPO listings within the first 60 days, he has built a platform capable of reaching 9–10 figure market capitalisation in 5 years. He has single-handedly delivered over 700 project presentations in less than 6 months and negotiated multiparty, multiphase 7–9 figure USD takeovers of family businesses and corporations across several sectors.",
-      "His astute business sense and core expertise in leadership, management, and large-scale business development have earned him the reputation of a high-performance business leader. What sets him apart is his love for Christ — helping both faith-driven entrepreneurs and investors find their community and fulfil their God-given call to create.",
+      "His astute business sense and core expertise in leadership, management, and large-scale business development have earned him the reputation of a high-performance business leader.",
+      "He has extensive experience across upstream, midstream, and downstream financing transactions within the oil and gas sector, having been involved in financing transactions exceeding $350 million in aggregate value.",
     ],
     expertise: ["Investment Banking", "Private Equity", "M&A Deal Structuring", "Capital Raising", "Capital Markets"],
   },
