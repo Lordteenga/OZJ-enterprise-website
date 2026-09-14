@@ -1,0 +1,73 @@
+import { RouterProvider, useRouter } from "./router"
+import Nav from "./components/Nav"
+import Footer from "./components/Footer"
+import PageLoader from "./components/PageLoader"
+import Home from "./pages/Home"
+import About from "./pages/About"
+import Team, { TeamProfile } from "./pages/Team"
+import Capabilities from "./pages/Capabilities"
+import Procurement from "./pages/Procurement"
+import QualityHSE from "./pages/QualityHSE"
+import Contact from "./pages/Contact"
+
+function Routes() {
+  const { path } = useRouter()
+
+  let page
+  switch (path) {
+    case "/about":
+      page = <About />
+      break
+    case "/team":
+      page = <Team />
+      break
+    case "/team/oshoma-zekeri":
+      page = <TeamProfile slug="oshoma-zekeri" />
+      break
+    case "/team/ola-joshua":
+      page = <TeamProfile slug="ola-joshua" />
+      break
+    case "/capabilities":
+      page = <Capabilities />
+      break
+    case "/procurement":
+      page = <Procurement />
+      break
+    case "/quality-hse":
+      page = <QualityHSE />
+      break
+    case "/contact":
+      page = <Contact />
+      break
+    case "/careers":
+      page = (
+        <div className="flex min-h-[60vh] items-center justify-center px-6 pt-[76px]">
+          <div className="text-center">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-orange">Coming Soon</p>
+            <h1 className="mt-4 font-display text-4xl font-bold text-navy">Careers at OZJ</h1>
+            <p className="mt-4 text-ink/60">Career opportunities page — content to be supplied.</p>
+          </div>
+        </div>
+      )
+      break
+    default:
+      page = <Home />
+  }
+
+  return (
+    <div className="flex min-h-full flex-col">
+      <Nav />
+      <main className="page-enter flex-1">{page}</main>
+      <Footer />
+    </div>
+  )
+}
+
+export default function App() {
+  return (
+    <RouterProvider>
+      <PageLoader />
+      <Routes />
+    </RouterProvider>
+  )
+}

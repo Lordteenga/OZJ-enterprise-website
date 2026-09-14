@@ -1,0 +1,11 @@
+{
+  "title": "OZJ Oil & Gas",
+  "description": "OZJ enterprise website serves as a comprehensive platform for businesses to showcase their services, connect with clients, and streamline operations.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
