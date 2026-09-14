@@ -20,9 +20,22 @@ export default function Nav() {
   }, [path])
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : ""
+    if (!open) return
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false)
+    }
+    const desktop = window.matchMedia("(min-width: 64rem)")
+    const onResize = () => {
+      if (desktop.matches) setOpen(false)
+    }
+    window.addEventListener("keydown", onKeyDown)
+    desktop.addEventListener("change", onResize)
     return () => {
-      document.body.style.overflow = ""
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener("keydown", onKeyDown)
+      desktop.removeEventListener("change", onResize)
     }
   }, [open])
 
@@ -34,9 +47,8 @@ export default function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "border-b border-hair bg-white/95 backdrop-blur-md" : "border-b border-transparent bg-white/80 backdrop-blur-sm"
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "border-b border-hair bg-white/95 backdrop-blur-md" : "border-b border-transparent bg-white/80 backdrop-blur-sm"
+        }`}
     >
       <div className="mx-auto flex h-[76px] w-full max-w-[1360px] items-center justify-between px-6 sm:px-8 lg:px-12">
         <Logo />
@@ -46,9 +58,8 @@ export default function Nav() {
             <Link
               key={item.label}
               to={item.to}
-              className={`relative text-[14px] font-medium tracking-tight transition-colors hover:text-navy ${
-                isActive(item.to) ? "text-navy" : "text-ink/70"
-              }`}
+              className={`relative text-[14px] font-medium tracking-tight transition-colors hover:text-navy ${isActive(item.to) ? "text-navy" : "text-ink/70"
+                }`}
             >
               {item.label}
               {isActive(item.to) && <span className="absolute -bottom-[26px] left-0 h-[2px] w-full bg-orange" aria-hidden="true" />}
@@ -70,6 +81,7 @@ export default function Nav() {
           className="grid h-11 w-11 place-items-center lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
+          aria-controls="mobile-navigation"
           onClick={() => setOpen((v) => !v)}
         >
           <span className="relative flex h-4 w-6 flex-col justify-between">
@@ -82,11 +94,13 @@ export default function Nav() {
 
       {/* Mobile drawer */}
       <div
-        className={`fixed inset-0 top-[76px] z-40 origin-top bg-navy transition-all duration-300 lg:hidden ${
-          open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
-        }`}
+        id="mobile-navigation"
+        inert={!open}
+        aria-hidden={!open}
+        className={`absolute inset-x-0 top-[76px] z-40 h-[calc(100dvh-76px)] overflow-y-auto overscroll-contain bg-navy transition-opacity duration-300 lg:hidden ${open ? "visible opacity-100" : "invisible pointer-events-none opacity-0"
+          }`}
       >
-        <nav className="flex h-full flex-col px-6 pt-6" aria-label="Mobile">
+        <nav className="flex min-h-full flex-col px-6 pt-6 pb-[max(2rem,env(safe-area-inset-bottom))]" aria-label="Mobile">
           {nav.map((item, i) => (
             <Link
               key={item.label}
