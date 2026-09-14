@@ -48,12 +48,17 @@ type FigmaSiteConfiguration = {
   language?: string
   robots?: {
     index?: boolean
+    crawl?: boolean
   }
   icons?: {
     icon?: string
   }
   openGraph?: {
     image?: string
+    imageAlt?: string
+    imageType?: string
+    imageWidth?: number
+    imageHeight?: number
   }
   analytics?: {
     googleAnalyticsId?: string
@@ -91,7 +96,13 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
   const headEnd = config.customScripts?.headEnd ?? ''
   const bodyStart = config.customScripts?.bodyStart ?? ''
   const bodyEnd = config.customScripts?.bodyEnd ?? ''
-  const robotsTxt = config.robots?.index === false ? 'User-agent: *\nDisallow: /\n' : ''
+  // Link-preview crawlers need access to the page and image. The noindex meta
+  // tag below controls search indexing independently of crawler access.
+  const robotsTxt = config.robots?.crawl === true
+    ? 'User-agent: *\nAllow: /\n'
+    : config.robots?.crawl === false || config.robots?.index === false
+      ? 'User-agent: *\nDisallow: /\n'
+      : ''
 
   return {
     name: 'figma-site-configuration',
@@ -134,17 +145,38 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
           tags.push({ tag: 'link', attrs: { rel: 'icon', href: favicon }, injectTo: 'head' })
         }
         if (title) {
-          tags.push({ tag: 'meta', attrs: { property: 'og:title', content: title }, injectTo: 'head' })
+          tags.push(
+            { tag: 'meta', attrs: { property: 'og:title', content: title }, injectTo: 'head' },
+            { tag: 'meta', attrs: { name: 'twitter:title', content: title }, injectTo: 'head' },
+          )
         }
         if (description) {
-          tags.push({ tag: 'meta', attrs: { property: 'og:description', content: description }, injectTo: 'head' })
+          tags.push(
+            { tag: 'meta', attrs: { property: 'og:description', content: description }, injectTo: 'head' },
+            { tag: 'meta', attrs: { name: 'twitter:description', content: description }, injectTo: 'head' },
+          )
         }
         if (socialImage) {
           tags.push(
+            { tag: 'meta', attrs: { property: 'og:type', content: 'website' }, injectTo: 'head' },
             { tag: 'meta', attrs: { property: 'og:image', content: socialImage }, injectTo: 'head' },
             { tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' }, injectTo: 'head' },
             { tag: 'meta', attrs: { name: 'twitter:image', content: socialImage }, injectTo: 'head' },
           )
+          const imageProperties = {
+            'og:image:alt': config.openGraph?.imageAlt,
+            'og:image:type': config.openGraph?.imageType,
+            'og:image:width': config.openGraph?.imageWidth,
+            'og:image:height': config.openGraph?.imageHeight,
+          }
+          for (const [property, content] of Object.entries(imageProperties)) {
+            if (content !== undefined) {
+              tags.push({ tag: 'meta', attrs: { property, content: String(content) }, injectTo: 'head' })
+            }
+          }
+          if (config.openGraph?.imageAlt) {
+            tags.push({ tag: 'meta', attrs: { name: 'twitter:image:alt', content: config.openGraph.imageAlt }, injectTo: 'head' })
+          }
         }
 
         if (googleAnalyticsId) {
