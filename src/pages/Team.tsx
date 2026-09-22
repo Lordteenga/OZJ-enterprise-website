@@ -1,6 +1,7 @@
 import { Link } from "../router"
 import oshomaImg from "../imports/WhatsApp_Image_2026-09-14_at_01.04.54.jpeg"
 import olaImg from "../imports/WhatsApp_Image_2026-09-14_at_01.06.40.jpeg"
+import akintoyeImg from "../imports/dr-akintoye-akindele.jpeg"
 import rigImg from "../imports/gabriel-xavier-XquCLVbTYLE-unsplash.jpg"
 import PageHero from "../components/PageHero"
 import Section from "../components/ui/Section"
@@ -17,6 +18,28 @@ function LinkedInIcon({ className = "" }: { className?: string }) {
 }
 
 export const leaders = [
+  {
+    slug: "akintoye-akindele",
+    name: "Dr. Akintoye Akindele",
+    role: "Chairman, OZJ Oil and Gas",
+    image: akintoyeImg,
+    imageAlt: "Dr. Akintoye Akindele, Chairman of OZJ Oil and Gas",
+    tagline: "Private Capital · Energy · Infrastructure",
+    linkedin: "https://www.linkedin.com/in/dr-akintoye-akindele-cfa-dba-fica-3903283",
+    stats: [
+      { figure: "$1.5B+", label: "Platform Capital AUM / portfolio value" },
+      { figure: "$350M+", label: "Synergy Capital Partners AUM" },
+      { figure: "Africa", label: "Investment focus" },
+    ],
+    bio: [
+      "Dr. Akintoye Akindele is the Founder and Chairman of Platform Capital, one of Africa’s leading investment firms and family-office platforms, with over $1.5 billion in assets under management/portfolio value.",
+      "Prior to founding Platform Capital, Dr. Akindele was a Founder and Partner at Synergy Capital Partners, a leading African private equity firm with over $350 million in AUM.",
+      "He has extensive experience across private equity, investment management, corporate finance, entrepreneurship and energy infrastructure, and has been involved in investing in and building businesses across Africa.",
+      "Dr. Akindele also serves in leadership roles across several prominent African companies, including Duport Midstream and MidAtlantic Partners, with significant interests in the oil & gas, energy and infrastructure sectors.",
+      "He is also an entrepreneur, investor, mentor and educator, with a strong track record of supporting and financing African businesses and entrepreneurs.",
+    ],
+    expertise: ["Private Equity", "Investment Management", "Corporate Finance", "Energy Infrastructure", "Entrepreneurship", "Mentorship"],
+  },
   {
     slug: "oshoma-zekeri",
     name: "Oshoma Zekeri",
@@ -80,7 +103,7 @@ export default function Team() {
           </h2>
         </Reveal>
 
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:gap-10">
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
           {leaders.map((leader, i) => (
             <Reveal key={leader.slug} delay={i * 100}>
               <Link
@@ -109,7 +132,7 @@ export default function Team() {
                 </div>
 
                 {/* Card footer */}
-                <div className="flex items-center justify-between px-6 py-5">
+                <div className="flex flex-wrap items-center justify-between gap-4 px-6 py-5">
                   <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/50">{leader.tagline}</p>
                   <span className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-navy transition-colors group-hover:text-orange">
                     View profile
