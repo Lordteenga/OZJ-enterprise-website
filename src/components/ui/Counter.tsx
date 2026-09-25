@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 
 // Count-up used ONLY for the single factual figure supplied in the brief (30+).
 export default function Counter({ target, suffix = "", duration = 1400 }: { target: number; suffix?: string; duration?: number }) {
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState(target)
   const ref = useRef<HTMLSpanElement | null>(null)
   const started = useRef(false)
 

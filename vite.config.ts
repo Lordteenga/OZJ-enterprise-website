@@ -11,6 +11,11 @@ export default defineConfig(({ mode }) => {
   const emitSourcemaps = mode === 'development'
 
   return {
+    define: {
+      'import.meta.env.VITE_SEO_INDEXABLE': JSON.stringify(
+        process.env.VERCEL_ENV === 'preview' || mode !== 'production' || process.env.VITE_SEO_INDEXABLE === 'false' ? 'false' : 'true'
+      ),
+    },
     base: process.env.FIGMA_PUBLIC_URL ? `${process.env.FIGMA_PUBLIC_URL}/` : '/',
     build: {
       sourcemap: emitSourcemaps ? 'inline' : false,

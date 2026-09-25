@@ -1,7 +1,7 @@
 import { RouterProvider, useRouter } from "./router"
 import Nav from "./components/Nav"
 import Footer from "./components/Footer"
-import PageLoader from "./components/PageLoader"
+import Seo from "./components/Seo"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Team, { TeamProfile } from "./pages/Team"
@@ -53,12 +53,16 @@ function Routes() {
         </div>
       )
       break
-    default:
+    case "/":
       page = <Home />
+      break
+    default:
+      page = <div className="mx-auto px-6 pb-24 pt-40"><h1 className="text-4xl font-bold">Page not found</h1><p className="mt-4">This page does not exist. <a href="/" className="underline">Return to the homepage</a>.</p></div>
   }
 
   return (
     <div className="flex min-h-full flex-col">
+      <Seo path={path} />
       <Nav />
       <main className="page-enter flex-1">{page}</main>
       <Footer />
@@ -66,10 +70,9 @@ function Routes() {
   )
 }
 
-export default function App() {
+export default function App({ initialPath }: { initialPath?: string }) {
   return (
-    <RouterProvider>
-      <PageLoader />
+    <RouterProvider initialPath={initialPath}>
       <Routes />
     </RouterProvider>
   )

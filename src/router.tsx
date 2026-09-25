@@ -10,8 +10,8 @@ const RouterContext = createContext<RouterContextValue>({
   navigate: () => {},
 })
 
-export function RouterProvider({ children }: { children: ReactNode }) {
-  const [path, setPath] = useState(() => window.location.pathname || "/")
+export function RouterProvider({ children, initialPath }: { children: ReactNode; initialPath?: string }) {
+  const [path, setPath] = useState(() => initialPath ?? (typeof window === "undefined" ? "/" : window.location.pathname.replace(/\/$/, "") || "/"))
 
   useEffect(() => {
     const onPop = () => setPath(window.location.pathname || "/")
@@ -64,6 +64,7 @@ export function Link({ to, className, children, onClick, ...rest }: LinkProps) {
       className={className}
       aria-label={rest["aria-label"]}
       onClick={(e) => {
+        if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
         e.preventDefault()
         onClick?.()
         navigate(to)

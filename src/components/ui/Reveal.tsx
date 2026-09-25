@@ -11,7 +11,7 @@ type RevealProps = {
 export default function Reveal({ children, className = "", as, delay = 0, id }: RevealProps) {
   const Tag = (as ?? "div") as ElementType
   const ref = useRef<HTMLElement | null>(null)
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(true)
 
   useEffect(() => {
     const el = ref.current
