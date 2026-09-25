@@ -5,6 +5,7 @@ async function htmlFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true })
   return (await Promise.all(entries.map(entry => entry.isDirectory() ? htmlFiles(path.join(directory, entry.name)) : entry.name.endsWith(".html") ? [path.join(directory, entry.name)] : []))).flat()
 }
+assert.equal(await readFile("dist/.htaccess", "utf8"), await readFile("public/.htaccess", "utf8"), "Hostinger routing must be included in the deployment")
 const titles = new Set()
 const files = await htmlFiles("dist")
 assert.equal(files.length, 12)

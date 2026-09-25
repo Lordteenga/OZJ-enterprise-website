@@ -1,0 +1,9 @@
+# Hostinger / Apache / LiteSpeed: serve each prerendered route's own HTML.
+Options -MultiViews -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+RewriteEngine On
+
+# Match before directory handling: /team is both a page and a profile folder.
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^([a-z0-9-]+(?:/[a-z0-9-]+)*)/?$ $1.html [END]
