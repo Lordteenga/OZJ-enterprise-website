@@ -3,6 +3,7 @@ import oshomaImg from "../imports/WhatsApp_Image_2026-09-14_at_01.04.54.jpeg"
 import olaImg from "../imports/WhatsApp_Image_2026-09-14_at_01.06.40.jpeg"
 import akintoyeImg from "../imports/dr-akintoye-akindele.jpeg"
 import mopeImg from "../imports/mope-abudu.jpeg"
+import solomonImg from "../imports/solomon-francis.jpeg"
 import rigImg from "../imports/gabriel-xavier-XquCLVbTYLE-unsplash.jpg"
 import PageHero from "../components/PageHero"
 import Section from "../components/ui/Section"
@@ -110,6 +111,33 @@ export const leaders = [
       "Accelerator Platforms",
     ],
   },
+  {
+    slug: "ozekhome-solomon-francis",
+    name: "Ozekhome Solomon Francis",
+    role: "Chief Procurement Officer",
+    image: solomonImg,
+    imageAlt: "Ozekhome Solomon Francis, Chief Procurement Officer at OZJ Enterprise Limited",
+    tagline: "Strategic Sourcing · Supply Chain · Negotiations",
+    linkedin: "https://www.linkedin.com/in/solomon-francis-ozekhome-429b55114",
+    stats: [
+      { figure: "8+", label: "Years procurement experience" },
+      { figure: "CPO", label: "Chief Procurement Officer" },
+      { figure: "Oil & Gas", label: "Supply chain & sourcing" },
+    ],
+    bio: [
+      "Ozekhome Solomon Francis is a procurement professional with over 8 years of experience in strategic sourcing, supplier relationship management, contract negotiation, and supply chain optimization across diverse industries.",
+      "He brings expertise in managing end-to-end procurement operations, including vendor selection, commercial negotiations, cost optimization, inventory management, and procurement compliance. His professional strengths include building strategic supplier partnerships, streamlining procurement processes, and ensuring the timely availability of critical materials and services.",
+      "As Chief Procurement Officer at OZJ Enterprise, Solomon leads the company's procurement strategy, oversees supplier relationships, negotiates competitive commercial terms, and strengthens procurement operations across its Oil & Gas, energy, and industrial supply activities.",
+    ],
+    expertise: [
+      "Strategic Sourcing",
+      "Supplier Relationships",
+      "Contract Negotiation",
+      "Supply Chain Optimization",
+      "Procurement Operations",
+      "Cost Optimization",
+    ],
+  },
 ]
 
 /* ---------------- Team card grid (index) ---------------- */
@@ -132,7 +160,7 @@ export default function Team() {
           </h2>
         </Reveal>
 
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 lg:gap-8">
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {leaders.map((leader, i) => (
             <Reveal key={leader.slug} delay={i * 100}>
               <Link
