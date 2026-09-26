@@ -2,6 +2,7 @@ import { Link } from "../router"
 import oshomaImg from "../imports/WhatsApp_Image_2026-09-14_at_01.04.54.jpeg"
 import olaImg from "../imports/WhatsApp_Image_2026-09-14_at_01.06.40.jpeg"
 import akintoyeImg from "../imports/dr-akintoye-akindele.jpeg"
+import mopeImg from "../imports/mope-abudu.jpeg"
 import rigImg from "../imports/gabriel-xavier-XquCLVbTYLE-unsplash.jpg"
 import PageHero from "../components/PageHero"
 import Section from "../components/ui/Section"
@@ -81,6 +82,34 @@ export const leaders = [
     ],
     expertise: ["Investment Banking", "Private Equity", "M&A Deal Structuring", "Capital Raising", "Capital Markets"],
   },
+  {
+    slug: "mope-abudu",
+    name: "Mope Abudu",
+    role: "Non Executive Director",
+    image: mopeImg,
+    imageAlt: "Mope Abudu, Non Executive Director at OZJ Enterprise Limited",
+    tagline: "Finance · Governance · Venture Capital",
+    linkedin: "https://www.linkedin.com/in/mope-abudu-72864717",
+    stats: [
+      { figure: "30+", label: "Years finance experience" },
+      { figure: "CGMA", label: "Chartered Management Accountant" },
+      { figure: "VC", label: "AfriGloCal VC / Knight Ventures" },
+    ],
+    bio: [
+      "Mope is an experienced African finance and investment professional with 30+ years of experience spanning financial institutions and management consulting.",
+      "She has expertise in finance, business operations, transformation, governance, and investments, and holds CGMA and ACMA credentials.",
+      "She is currently the Founder and Managing Partner of AfriGloCal VC, a women-led asset allocator and venture capital firm focused on pre-seed and seed-stage African startups, particularly scalable businesses in FinTech, marketplaces, SaaS, and tech-enabled services with cross-border potential.",
+      "She is also the Founder and CEO of Knight Ventures, an African accelerator platform connecting founders, mentors, and investors.",
+    ],
+    expertise: [
+      "Finance & Investment",
+      "Business Operations",
+      "Corporate Governance",
+      "Asset Allocation",
+      "Venture Capital",
+      "Accelerator Platforms",
+    ],
+  },
 ]
 
 /* ---------------- Team card grid (index) ---------------- */
@@ -103,7 +132,7 @@ export default function Team() {
           </h2>
         </Reveal>
 
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 lg:gap-8">
           {leaders.map((leader, i) => (
             <Reveal key={leader.slug} delay={i * 100}>
               <Link

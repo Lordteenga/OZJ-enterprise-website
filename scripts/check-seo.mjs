@@ -8,7 +8,7 @@ async function htmlFiles(directory) {
 assert.equal(await readFile("dist/.htaccess", "utf8"), await readFile("public/.htaccess", "utf8"), "Hostinger routing must be included in the deployment")
 const titles = new Set()
 const files = await htmlFiles("dist")
-assert.equal(files.length, 12)
+assert.equal(files.length, 13)
 for (const file of files) {
   const html = await readFile(file, "utf8")
   const title = html.match(/<title[^>]*>(.*?)<\/title>/)?.[1]
@@ -26,6 +26,6 @@ for (const file of files) {
   for (const [, asset] of html.matchAll(/(?:src|href)="(\/assets\/[^"?#]+)"/g)) await access(`dist${asset}`)
 }
 const sitemap = await readFile("dist/sitemap.xml", "utf8")
-assert.equal((sitemap.match(/<loc>/g) || []).length, 10)
+assert.equal((sitemap.match(/<loc>/g) || []).length, 11)
 assert(!sitemap.includes("careers") && !sitemap.includes("404"))
 console.log(`SEO checks passed for ${files.length} HTML documents: metadata, headings, indexability, JSON-LD, assets and sitemap.`)

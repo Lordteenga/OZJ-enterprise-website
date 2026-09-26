@@ -30,6 +30,9 @@ function Routes() {
     case "/team/ola-joshua":
       page = <TeamProfile slug="ola-joshua" />
       break
+    case "/team/mope-abudu":
+      page = <TeamProfile slug="mope-abudu" />
+      break
     case "/capabilities":
       page = <Capabilities />
       break
