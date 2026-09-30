@@ -252,7 +252,7 @@ export default function Contact() {
                 <li>
                   <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/45">Nigeria Office</div>
                   <address className="mt-1 block not-italic text-base font-medium leading-relaxed">
-                    12 Wile Ariyo Street<br />
+                    12 Wole Ariyo Street<br />
                     Lekki Phase 1, Lagos<br />
                     Nigeria
                   </address>

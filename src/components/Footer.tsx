@@ -87,7 +87,7 @@ export default function Footer() {
               <li>
                 <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.18em] text-orange/70">Nigeria Office</p>
                 <address className="not-italic leading-relaxed">
-                  12 Wile Ariyo Street<br />
+                  12 Wole Ariyo Street<br />
                   Lekki Phase 1, Lagos<br />
                   Nigeria
                 </address>
