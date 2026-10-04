@@ -1,9 +1,10 @@
 import { Link } from "../router"
-import oshomaImg from "../imports/WhatsApp_Image_2026-09-14_at_01.04.54.jpeg"
+import oshomaImg from "../imports/oshoma-zekeri.png"
 import olaImg from "../imports/WhatsApp_Image_2026-09-14_at_01.06.40.jpeg"
 import akintoyeImg from "../imports/dr-akintoye-akindele.jpeg"
 import mopeImg from "../imports/mope-abudu.png"
 import solomonImg from "../imports/solomon-francis.png"
+import oluwaseeniImg from "../imports/oluwaseeni-adefusi.png"
 import rigImg from "../imports/gabriel-xavier-XquCLVbTYLE-unsplash.jpg"
 import PageHero from "../components/PageHero"
 import Section from "../components/ui/Section"
@@ -138,6 +139,33 @@ export const leaders = [
       "Cost Optimization",
     ],
   },
+  {
+    slug: "oluwaseeni-adefusi",
+    name: "Oluwaseeni Adefusi",
+    role: "Administrative Officer",
+    image: oluwaseeniImg,
+    imageAlt: "Oluwaseeni Adefusi, Administrative Officer at OZJ Oil & Gas",
+    tagline: "Administration · Operations · Communications",
+    linkedin: null,
+    stats: [
+      { figure: "10+", label: "Years of experience" },
+      { figure: "B.A.", label: "History & International Studies" },
+      { figure: "AAUA", label: "Adekunle Ajasin University" },
+    ],
+    bio: [
+      "Oluwaseeni Adefusi is an administrative and business support professional with over ten years of experience across administration, operations, customer relations, team coordination, digital communications and client support. Her professional background includes experience with Spectranet Limited, Upward Life Global Limited and New World Systems Global, as well as independent work in executive support, operations, events and social media.",
+      "At OZJ Oil & Gas, she supports administrative activities, business operations, research, coordination and communications, helping to ensure priorities are organised and day-to-day activities run efficiently. She also contributes to the company’s digital presence and brand visibility through content and communications support.",
+      "Oluwaseeni holds a B.A. in History and International Studies from Adekunle Ajasin University and brings strong organisational, communication, problem-solving and stakeholder-management skills to her role.",
+    ],
+    expertise: [
+      "Administration",
+      "Business Operations",
+      "Team Coordination",
+      "Digital Communications",
+      "Client Support",
+      "Stakeholder Management",
+    ],
+  },
 ]
 
 /* ---------------- Team card grid (index) ---------------- */
@@ -145,9 +173,9 @@ export default function Team() {
   return (
     <>
       <PageHero
-        eyebrow="Leadership"
+        eyebrow="Our Team"
         title="The people accountable for every delivery."
-        intro="OZJ is led by operators who treat energy supply as an institutional responsibility — meet the leadership setting the standard across our UK and Nigeria operations."
+        intro="Meet the people supporting delivery across our UK and Nigeria operations, from leadership and procurement to administration and business support."
         image={rigImg}
         alt="Offshore energy operations at sea"
       />
@@ -156,7 +184,7 @@ export default function Team() {
         <Reveal>
           <Eyebrow>Team</Eyebrow>
           <h2 className="mt-6 font-display text-4xl font-extrabold leading-[1.02] tracking-tight text-navy lg:text-[52px]">
-            Meet the <span className="text-orange">leadership</span>.
+            Meet the <span className="text-orange">team</span>.
           </h2>
         </Reveal>
 
@@ -261,7 +289,7 @@ export function TeamProfile({ slug }: { slug: string }) {
                 aria-hidden="true"
               />
               <span className="absolute left-5 top-5 font-mono text-[11px] uppercase tracking-[0.2em] text-white/80">
-                OZJ Leadership
+                OZJ Team
               </span>
             </div>
 
@@ -308,6 +336,7 @@ export function TeamProfile({ slug }: { slug: string }) {
               </div>
             </div>
 
+            {leader.linkedin && (
             <a
               href={leader.linkedin}
               target="_blank"
@@ -318,6 +347,7 @@ export function TeamProfile({ slug }: { slug: string }) {
               <LinkedInIcon className="h-4 w-4" />
               <span>Connect on LinkedIn</span>
             </a>
+            )}
           </Reveal>
         </div>
       </Section>
