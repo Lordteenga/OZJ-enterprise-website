@@ -115,20 +115,20 @@ export const leaders = [
   {
     slug: "ozekhome-solomon-francis",
     name: "Ozekhome Solomon Francis",
-    role: "Chief Procurement Officer",
+    role: "Procurement Lead",
     image: solomonImg,
-    imageAlt: "Ozekhome Solomon Francis, Chief Procurement Officer at OZJ Enterprise Limited",
+    imageAlt: "Ozekhome Solomon Francis, Procurement Lead at OZJ Enterprise Limited",
     tagline: "Strategic Sourcing · Supply Chain · Negotiations",
     linkedin: "https://www.linkedin.com/in/solomon-francis-ozekhome-429b55114",
     stats: [
       { figure: "8+", label: "Years procurement experience" },
-      { figure: "CPO", label: "Chief Procurement Officer" },
+      { figure: "Lead", label: "Procurement Lead" },
       { figure: "Oil & Gas", label: "Supply chain & sourcing" },
     ],
     bio: [
       "Ozekhome Solomon Francis is a procurement professional with over 8 years of experience in strategic sourcing, supplier relationship management, contract negotiation, and supply chain optimization across diverse industries.",
       "He brings expertise in managing end-to-end procurement operations, including vendor selection, commercial negotiations, cost optimization, inventory management, and procurement compliance. His professional strengths include building strategic supplier partnerships, streamlining procurement processes, and ensuring the timely availability of critical materials and services.",
-      "As Chief Procurement Officer at OZJ Enterprise, Solomon leads the company's procurement strategy, oversees supplier relationships, negotiates competitive commercial terms, and strengthens procurement operations across its Oil & Gas, energy, and industrial supply activities.",
+      "As Procurement Lead at OZJ Enterprise, Solomon leads the company's procurement strategy, oversees supplier relationships, negotiates competitive commercial terms, and strengthens procurement operations across its Oil & Gas, energy, and industrial supply activities.",
     ],
     expertise: [
       "Strategic Sourcing",
