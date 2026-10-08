@@ -27,10 +27,26 @@ export function renderSeo(path: string) {
   const graph: object[] = []
   if (path === "/" || path === "/about") graph.push({
     "@type": "Organization", "@id": `${siteUrl}/#organization`, name: "OZJ Oil & Gas", legalName: "OZJ Enterprise Limited", url: siteUrl,
+    logo: `${siteUrl}/favicon.png`,
     email: contact.email, telephone: contact.phone,
     description: pages["/about"].description,
   })
-  if (path === "/") graph.push({ "@type": "WebSite", "@id": `${siteUrl}/#website`, url: siteUrl, name: "OZJ Oil & Gas", alternateName: "OZJ Enterprise Limited", publisher: { "@id": `${siteUrl}/#organization` } })
+  if (path === "/") {
+    graph.push({ "@type": "WebSite", "@id": `${siteUrl}/#website`, url: siteUrl, name: "OZJ Oil & Gas", alternateName: "OZJ Enterprise Limited", publisher: { "@id": `${siteUrl}/#organization` } })
+    graph.push({
+      "@type": "ItemList",
+      "@id": `${siteUrl}/#sitelinks`,
+      name: "Main Navigation",
+      itemListElement: [
+        { "@type": "SiteNavigationElement", position: 1, name: "About Us", url: `${siteUrl}/about` },
+        { "@type": "SiteNavigationElement", position: 2, name: "Capabilities", url: `${siteUrl}/capabilities` },
+        { "@type": "SiteNavigationElement", position: 3, name: "Procurement", url: `${siteUrl}/procurement` },
+        { "@type": "SiteNavigationElement", position: 4, name: "Quality & HSE", url: `${siteUrl}/quality-hse` },
+        { "@type": "SiteNavigationElement", position: 5, name: "Our Team", url: `${siteUrl}/team` },
+        { "@type": "SiteNavigationElement", position: 6, name: "Contact Us", url: `${siteUrl}/contact` },
+      ]
+    })
+  }
   return [
     `<title data-seo>${escape(page.title)}</title>`,
     meta("description", page.description),
